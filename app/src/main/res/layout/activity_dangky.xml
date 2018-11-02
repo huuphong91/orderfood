@@ -13,7 +13,7 @@
             android:drawablePadding="@dimen/size10dp"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText" android:layout_marginTop="24dp"
+            android:id="@+id/edtTenDNDK" android:layout_marginTop="24dp"
             app:layout_constraintTop_toBottomOf="@+id/textView" android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="32dp"
             android:layout_marginStart="32dp"
@@ -26,11 +26,11 @@
             android:drawablePadding="@dimen/size10dp"
             android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/editText2" android:layout_marginStart="32dp"
+            android:id="@+id/edtMatKhau" android:layout_marginStart="32dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
             android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="32dp" android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/editText"
+            app:layout_constraintTop_toBottomOf="@+id/edtTenDNDK"
             android:drawableLeft="@drawable/password"
             android:background="@color/colorWhite" android:hint="@string/password"/>
     <EditText
@@ -39,8 +39,8 @@
             android:drawablePadding="@dimen/size10dp"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText3" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup" android:layout_marginStart="32dp"
+            android:id="@+id/edtNgaySinh" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/rgGioiTinh" android:layout_marginStart="32dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
             android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="32dp"
@@ -52,8 +52,8 @@
             android:drawablePadding="@dimen/size10dp"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText4" android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/editText3" android:layout_marginStart="32dp"
+            android:id="@+id/edtCMND" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/edtNgaySinh" android:layout_marginStart="32dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
             android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="32dp"
@@ -62,19 +62,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/editText2"
-            android:id="@+id/radioGroup"
-            app:layout_constraintStart_toStartOf="@+id/editText2"
+            app:layout_constraintTop_toBottomOf="@+id/edtMatKhau"
+            android:id="@+id/rgGioiTinh"
+            app:layout_constraintStart_toStartOf="@+id/edtMatKhau"
     >
         <RadioButton
                 android:text="@string/nam"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/radioButton" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/rbNam" android:layout_weight="1"
                 android:textColor="@color/colorWhite"/>
         <RadioButton
                 android:text="@string/nu"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/radioButton2" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/rbNu" android:layout_weight="1"
                 android:textColor="@color/colorWhite"/>
     </RadioGroup>
     <TextView
@@ -83,28 +83,29 @@
             android:layout_height="wrap_content"
             android:id="@+id/textView" android:textSize="26dp"
             android:textColor="@color/colorWhite" android:textStyle="bold"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="28dp"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp" android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"/>
     <Button
             android:text="@string/dongy"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/button" android:layout_marginTop="32dp"
-            app:layout_constraintTop_toBottomOf="@+id/editText4" app:layout_constraintStart_toStartOf="@+id/editText4"
+            android:id="@+id/btnDongY" android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@+id/edtCMND" app:layout_constraintStart_toStartOf="@+id/edtCMND"
             app:layout_constraintEnd_toStartOf="@+id/guideline" android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp" android:background="@color/colorGreenButton"
-            style="@style/Widget.AppCompat.Button.Borderless"/>
+            style="@style/Widget.AppCompat.Button.Borderless" android:onClick="onClickedBtnDongY"/>
     <Button
             android:text="@string/thoat"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/button2"
-            app:layout_constraintTop_toTopOf="@+id/button" app:layout_constraintEnd_toEndOf="@+id/editText4"
+            android:id="@+id/btnThoat"
+            app:layout_constraintTop_toTopOf="@+id/btnDongY" app:layout_constraintEnd_toEndOf="@+id/edtCMND"
             app:layout_constraintStart_toStartOf="@+id/guideline" android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp" android:background="@color/colorOrganeButton"
-            style="@style/Widget.AppCompat.Button.Borderless"/>
+            style="@style/Widget.AppCompat.Button.Borderless" android:onClick="onClickedBtnThoat"/>
     <android.support.constraint.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
                                           android:id="@+id/guideline"
                                           android:orientation="vertical"

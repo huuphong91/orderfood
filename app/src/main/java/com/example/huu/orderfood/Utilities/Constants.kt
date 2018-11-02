@@ -1,5 +1,7 @@
 package com.example.huu.orderfood.Utilities
 
+//Database
+const val DATABASE_NAME = "OrderFood"
 
 //Table Database
 const val TB_NHANVIEN = "NHANVIEN"
