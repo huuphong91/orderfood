@@ -1,25 +1,22 @@
 package com.example.huu.orderfood
 
-import android.app.DatePickerDialog
-import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.view.View
 import android.widget.Toast
 import com.example.huu.orderfood.Entities.NhanVienEntity
-import com.example.huu.orderfood.FragmentApp.DatePickerFragment
+import com.example.huu.orderfood.Fragments.DatePickerFragment
 import com.example.huu.orderfood.Services.NhanVienService
 import kotlinx.android.synthetic.main.activity_dangky.*
-import java.util.*
 
 class DangKyActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dangky)
+        //Bắt sự kiện người dùng có đang trỏ dấu nháy vào edtNgaySinh hay không
         edtNgaySinh.setOnFocusChangeListener { _, hasFocus ->
-
+                //Nếu có thì sẽ tạo một đối tượng DatePickerFragment và show lên
                 if (hasFocus) {
                     val datePickerFragment = DatePickerFragment()
                     datePickerFragment.show(supportFragmentManager,"Ngày Sinh")

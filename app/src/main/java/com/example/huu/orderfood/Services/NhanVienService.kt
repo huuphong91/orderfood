@@ -5,7 +5,7 @@ import android.content.ContentValues
 import android.content.Context
 import com.example.huu.orderfood.Entities.NhanVienEntity
 import com.example.huu.orderfood.Utilities.*
-
+//Đối tượng singleton này được dùng để kiểm tra, thao tác CRUD các dữ liệu  có trong table NHANVIEN
 object NhanVienService {
     fun themNhanVien(context: Context): Long {
         val contentValues = ContentValues()
@@ -17,6 +17,9 @@ object NhanVienService {
         return AuthService.createOrOpenDatabase(context).insert(TB_NHANVIEN,null,contentValues)
     }
 
+
+    //Phương thức này kiểm tra trong table đã có nhân viên hay chưa, dùng để kiểm tra sự kiện ẩn hiện button Đăng Ký
+    //Và button Đồng Ý, dùng trong DangNhapActivity
     @SuppressLint("Recycle")
     fun kiemTraNhanVienTonTai(context: Context, complete:(Boolean)-> Unit) {
         val truyvan = "SELECT * FROM $TB_NHANVIEN"
@@ -29,7 +32,7 @@ object NhanVienService {
     }
 
 
-
+//Kiểm tra sự kiên click button Đồng Ý sau khi người dùng đã nhập tên đăng nhập và mật khẩu
     @SuppressLint("Recycle")
     fun kiemTraDangNhap(context: Context, complete: (Boolean) -> Unit) {
         val truyvan = "SELECT * FROM $TB_NHANVIEN WHERE $TB_NHANVIEN_TENDN = '${NhanVienEntity.TENDN}' " +
