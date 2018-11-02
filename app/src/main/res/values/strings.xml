@@ -9,4 +9,6 @@
     <string name="dongy">Đồng ý</string>
     <string name="thoat">Thoát</string>
     <string name="dangky">Đăng ký</string>
+    <string name="dangnhap">Đăng nhập</string>
+
 </resources>
