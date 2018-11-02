@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">OderFood</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="nam">Nam</string>
+    <string name="nu">Nữ</string>
+    <string name="birthday">Birthday</string>
+    <string name="cmnd">CMND</string>
+    <string name="dongy">Đồng ý</string>
+    <string name="thoat">Thoát</string>
+    <string name="dangky">Đăng ký</string>
+</resources>
