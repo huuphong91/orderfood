@@ -33,7 +33,7 @@ class DangKyActivity : AppCompatActivity() {
         NhanVienEntity.MATKHAU = edtMatKhau.text.toString()
         NhanVienEntity.NGAYSINH = edtNgaySinh.text.toString()
         if (!edtCMND.text.toString().equals("")) {
-            NhanVienEntity.CMND = edtCMND.text.toString().toInt()
+            NhanVienEntity.CMND = edtCMND.text.toString().toLong()
         }
 
         NhanVienEntity.GIOITINH = when (rgGioiTinh.checkedRadioButtonId) {
@@ -48,6 +48,7 @@ class DangKyActivity : AppCompatActivity() {
             val kiemtra = NhanVienService.themNhanVien(this)
             if (kiemtra != 0L) {
                 Toast.makeText(this, "Thêm thành công", Toast.LENGTH_SHORT).show()
+                finish()
             } else {
                 Toast.makeText(this, "Thêm thất bại", Toast.LENGTH_SHORT).show()
             }

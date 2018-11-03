@@ -9,7 +9,7 @@ object NhanVienEntity {
     var MATKHAU = ""
     var GIOITINH = ""
     var NGAYSINH = ""
-    var CMND:Int = 0
+    var CMND:Long = 0
 //Reset lại data về mặc định nếu cần thiết
     fun resetData() {
          MANV = 0
@@ -25,4 +25,4 @@ object NhanVienEntity {
     }
 }
 
-class NhanVienEntity2(var iManv:Int, var sTenDn:String,var sMatKhau:String, var sGioiTinh:String, var sNgaySinh:String,var iCMND:Int )
+class NhanVienEntity2(var iManv:Int, var sTenDn:String,var sMatKhau:String, var sGioiTinh:String, var sNgaySinh:String,var iCMND:Long )
