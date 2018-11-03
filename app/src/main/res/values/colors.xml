@@ -7,4 +7,9 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorOrganeButton">#ef6c00</color>
     <color name="colorGreenButton">#43a047</color>
+    <color name="backgroundDangNhap">#68992e</color>
+    <color name="colorRed">#e40404</color>
+    <color name="backgroundToolbar">#d77a09</color>
+    <color name="backgroundtransparentGreen">#6643A047</color>
+    <color name="colorBlack">#000</color>
 </resources>

@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import com.example.huu.orderfood.Entities.NhanVienEntity
 import com.example.huu.orderfood.Services.NhanVienService
+import com.example.huu.orderfood.Utilities.TB_NHANVIEN_TENDN
 import kotlinx.android.synthetic.main.activity_dang_nhap.*
 
 class DangNhapActivity : AppCompatActivity() {
@@ -36,7 +37,8 @@ class DangNhapActivity : AppCompatActivity() {
         NhanVienEntity.MATKHAU = edtPasswordDN.text.toString()
         NhanVienService.kiemTraDangNhap(this) { it->
             if (it) {
-                Toast.makeText(this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, TrangChuActivity::class.java)
+                startActivity(intent)
 
             } else {
                 Toast.makeText(this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show()
