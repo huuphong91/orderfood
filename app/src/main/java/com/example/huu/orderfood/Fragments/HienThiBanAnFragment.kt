@@ -31,18 +31,21 @@ class HienThiBanAnFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_hien_thi_ban_an, container, false)
+        //Khai báo rằng fragment này có option menu
         setHasOptionsMenu(true)
         gvHienThiBanAn = view.findViewById(R.id.gvHienBanAn) as GridView
         hienThiDanhSachBanAn()
-
         return view
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
         super.onCreateOptionsMenu(menu, inflater)
+        //thêm item menu sẵn có không cần inflate menu
         if (menu != null) {
             val itThemBanAn = menu.add(1,R.id.itThemBanAn,1,R.string.thembanan)
+            //tạo icon cho menu item
             itThemBanAn.setIcon(R.drawable.thembanan)
+            //hiển thị menu item nếu còn chỗ trống trên toolbar
             itThemBanAn.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
         }
 
