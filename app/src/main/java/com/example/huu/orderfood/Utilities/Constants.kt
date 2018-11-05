@@ -25,6 +25,7 @@ const val TB_MONAN_MAMON = "MAMON"
 const val TB_MONAN_TENMONAN = "TENMONAN"
 const val TB_MONAN_GIATIEN = "GIATIEN"
 const val TB_MONAN_MALOAI = "MALOAI"
+const val TB_MONAN_HINHANH = "HINHANH"
 
 //Property of table LOAIMONAN
 const val TB_LOAIMONAN_MALOAI = "MALOAI"
@@ -46,6 +47,9 @@ const val TB_GOIMON_MABAN = "MABAN"
 const val TB_CHITIETGOIMON_MAGOIMON = "MAGOIMON"
 const val TB_CHITIETGOIMON_MAMONAN = "MAMONAN"
 const val TB_CHITIETGOIMON_SOLUONG = "SOLUONG"
+
+//Request Code
+const val REQUEST_CODE_MOHINH = 1
 
 
 

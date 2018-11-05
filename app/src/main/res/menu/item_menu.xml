@@ -4,4 +4,14 @@
 android:id="@+id/itThemBanAn"
 android:title="@string/thembanan"
 />
+
+    <item
+            android:id="@+id/itThemThucDon"
+            android:title=""
+    />
+
+    <item
+            android:id="@+id/itThemNhanVien"
+            android:title=""
+    />
 </menu>

@@ -13,6 +13,7 @@ import android.widget.GridView
 import com.example.huu.orderfood.Adapters.HienThiBanAnAdapter
 import com.example.huu.orderfood.Entities.BanAnEntity2
 import com.example.huu.orderfood.Services.BanAnService
+import com.example.huu.orderfood.TrangChuActivity
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -33,6 +34,8 @@ class HienThiBanAnFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_hien_thi_ban_an, container, false)
         //Khai báo rằng fragment này có option menu
         setHasOptionsMenu(true)
+        val activityTrangChuActivity:TrangChuActivity? = activity as TrangChuActivity?
+        activityTrangChuActivity?.supportActionBar!!.setTitle(R.string.banan)
         gvHienThiBanAn = view.findViewById(R.id.gvHienBanAn) as GridView
         hienThiDanhSachBanAn()
         return view

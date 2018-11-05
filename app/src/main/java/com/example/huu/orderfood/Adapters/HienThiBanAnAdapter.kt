@@ -33,7 +33,7 @@ class HienThiBanAnAdapter(val context: Context, val danhSachBanAn:List<BanAnEnti
             view = convertView
         }
         viewHolder.txtTenBanAn!!.setText(danhSachBanAn.get(position).tenban);
-        view.setOnClickListener { v ->
+        view.setOnClickListener { _ ->
 
                 viewHolder.imGoiMon?.visibility = View.VISIBLE
         }
