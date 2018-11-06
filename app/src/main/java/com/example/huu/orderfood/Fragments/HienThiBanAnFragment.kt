@@ -81,4 +81,6 @@ class HienThiBanAnFragment : Fragment() {
         adapter = HienThiBanAnAdapter(activity!!,danhSachBanAn)
         gvHienThiBanAn.adapter = adapter
     }
+
+
 }
