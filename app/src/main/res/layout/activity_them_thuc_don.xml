@@ -51,7 +51,7 @@
                     android:hint="Giá tiền"
                     android:textColor="@color/colorGray"
                     android:textColorHint="@color/colorGray"
-                    android:numeric="integer"
+                    android:inputType="number"
             />
 
             <LinearLayout

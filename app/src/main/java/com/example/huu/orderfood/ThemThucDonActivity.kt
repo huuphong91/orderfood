@@ -16,6 +16,7 @@ import com.example.huu.orderfood.Services.LoaiMonAnService
 import com.example.huu.orderfood.Services.MonAnService
 import com.example.huu.orderfood.Utilities.REQUEST_CODE_MOHINH
 import kotlinx.android.synthetic.main.activity_them_thuc_don.*
+import kotlinx.android.synthetic.main.activity_then_loai_thuc_don.*
 import java.io.IOException
 
 class ThemThucDonActivity : AppCompatActivity() {
@@ -57,7 +58,7 @@ class ThemThucDonActivity : AppCompatActivity() {
     fun onClickedBtnThemMonAn(view: View) {
         val position = spinLoaiMonAn.selectedItemPosition
         MonAnEntity.MALOAI =  LoaiMonAnService.layTatCaLoaiMonAn(this).get(position).maloai
-        MonAnEntity.TENMONAN = edThemGiaTien.text.toString()
+        MonAnEntity.TENMONAN = edThemTenMonAn.text.toString()
         MonAnEntity.GIATIEN = edThemGiaTien.text.toString()
         if (!MonAnEntity.TENMONAN.equals("") && !MonAnEntity.GIATIEN.equals("")) {
             val kiemtra = MonAnService.themMonAn(this)

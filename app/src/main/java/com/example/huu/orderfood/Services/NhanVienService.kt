@@ -38,7 +38,13 @@ object NhanVienService {
         val truyvan = "SELECT * FROM $TB_NHANVIEN WHERE $TB_NHANVIEN_TENDN = '${NhanVienEntity.TENDN}' " +
                 "AND $TB_NHANVIEN_MATKHAU = '${NhanVienEntity.MATKHAU}'"
         val cursor = AuthService.createOrOpenDatabase(context).rawQuery(truyvan, null)
+    cursor.moveToFirst()
+
         if (cursor.count != 0) {
+            while (!cursor.isAfterLast) {
+                NhanVienEntity.MANV = cursor.getInt(cursor.getColumnIndex(TB_NHANVIEN_MANV))
+                cursor.moveToNext()
+            }
             complete(true)
 
         } else {

@@ -14,13 +14,13 @@ object BanAnService {
         val contentValues = ContentValues()
         contentValues.put(TB_BANAN_TENBAN, BanAnEntity.TENBAN)
         contentValues.put(TB_BANAN_TINHTRANG, BanAnEntity.TINHTRANG)
-        return AuthService.createOrOpenDatabase(context).insert(TB_BANAN,null,contentValues)
+        return AuthService.createOrOpenDatabase(context).insert(TB_BANAN, null, contentValues)
     }
 
     fun layTatCaBanAn(context: Context): List<BanAnEntity2> {
         val danhSachBanAn = arrayListOf<BanAnEntity2>()
         val truyvan = "SELECT * FROM $TB_BANAN"
-        val cursor = AuthService.createOrOpenDatabase(context).rawQuery(truyvan,null)
+        val cursor = AuthService.createOrOpenDatabase(context).rawQuery(truyvan, null)
         cursor.moveToFirst()
         while (!cursor.isAfterLast) {
             BanAnEntity.MABAN = cursor.getInt(cursor.getColumnIndex(TB_BANAN_MABAN))
@@ -30,6 +30,31 @@ object BanAnService {
             cursor.moveToNext()
         }
         return danhSachBanAn
+    }
 
+
+    fun layTinhTrangBanTheoMa(context: Context, maban:Int):String {
+        var tinhtrang:String = ""
+        val truyvan = "SELECT * FROM $TB_BANAN WHERE $TB_BANAN_MABAN = '$maban'"
+        val cursor = AuthService.createOrOpenDatabase(context).rawQuery(truyvan, null)
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()){
+            tinhtrang = cursor.getString(cursor.getColumnIndex(TB_BANAN_TINHTRANG))
+            cursor.moveToNext();
+        }
+        return tinhtrang
+    }
+
+    fun capNhatTinhTrangBan(context: Context, maban:Int, complition:(Boolean) -> Unit) {
+        val contentValues = ContentValues()
+        contentValues.put(TB_BANAN_TINHTRANG, BanAnEntity.TINHTRANG)
+        val kiemtra = AuthService.createOrOpenDatabase(context).update(TB_BANAN,contentValues,
+            "$TB_BANAN_MABAN = ${maban}",null)
+
+        if (kiemtra != 0) {
+            complition(true)
+        } else {
+            complition(false)
+        }
     }
 }

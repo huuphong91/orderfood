@@ -36,11 +36,9 @@ class HienThiLoaiMonAnAdapter(val context: Context, val danhSachLoaiMonAn:List<L
             viewHolder = convertView.getTag() as ViewHolder
             view = convertView
         }
-//        val loaiMonAnEntity2 = danhSachLoaiMonAn.get(position)
-//        LoaiMonAnEntity.MALOAI = loaiMonAnEntity2.maloai
-        val monAnEnTity = MonAnService.layMonAnTheoMaLoaiMoiNhat(context)
+
         viewHolder.txtTenLoaiThucDon?.text = danhSachLoaiMonAn.get(position).tenloai
-//        viewHolder.imHinhLoaiThucDon?.setImageURI(Uri.parse(monAnEnTity.hinhanh))
+
 
         return view
     }

@@ -4,9 +4,11 @@ package com.example.huu.orderfood.Fragments
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
 import android.view.*
 import android.widget.GridView
 import com.example.huu.orderfood.Adapters.HienThiLoaiMonAnAdapter
+import com.example.huu.orderfood.Entities.LoaiMonAnEntity
 import com.example.huu.orderfood.Entities.LoaiMonAnEntity2
 
 import com.example.huu.orderfood.R
@@ -28,15 +30,26 @@ class HienThiThucDonFragment : Fragment() {
     lateinit var danhSachLoaiMonAn:List<LoaiMonAnEntity2>
     lateinit var adapter:HienThiLoaiMonAnAdapter
     lateinit var gvHienThiLoaiMonAn: GridView
+    lateinit var fragManager: FragmentManager
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_hien_thi_thuc_don, container, false)
         setHasOptionsMenu(true)
+        fragManager = activity!!.supportFragmentManager
         val activityTrangChuActivity: TrangChuActivity? = activity as TrangChuActivity?
         activityTrangChuActivity?.supportActionBar!!.setTitle(R.string.thucdon)
         gvHienThiLoaiMonAn = view.findViewById(R.id.gvHienThiThucDon) as GridView
         hienThiDanhSachLoaiMonAn()
         adapter.notifyDataSetChanged()
+        gvHienThiLoaiMonAn.setOnItemClickListener { _, _, position, _ ->
+            LoaiMonAnEntity.MALOAI = danhSachLoaiMonAn.get(position).maloai
+            val hienThiDanhSachMonAnFragment = HienThiDanhSachMonAnFragment()
+            val fragTransaction = fragManager.beginTransaction()
+            fragTransaction.replace(R.id.content,hienThiDanhSachMonAnFragment).addToBackStack("hienthiloai")
+            fragTransaction.commit()
+
+        }
+
 
 
         return view
