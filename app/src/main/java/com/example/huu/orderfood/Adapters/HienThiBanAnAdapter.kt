@@ -2,6 +2,7 @@ package com.example.huu.orderfood.Adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,20 +16,16 @@ import com.example.huu.orderfood.Services.BanAnService
 import java.text.SimpleDateFormat
 import java.util.*
 import com.example.huu.orderfood.TrangChuActivity
-import android.content.Intent
-import android.support.v4.app.FragmentManager
-import android.util.Log
 import android.widget.Toast
 import com.example.huu.orderfood.Entities.GoiMonEntity
 import com.example.huu.orderfood.Entities.NhanVienEntity
 import com.example.huu.orderfood.Fragments.HienThiThucDonFragment
 import com.example.huu.orderfood.Services.GoiMonService
-
-
+import kotlin.collections.ArrayList
 
 
 class HienThiBanAnAdapter(val context: Context, val danhSachBanAn: List<BanAnEntity2>) : BaseAdapter() {
-
+    private var listStringKtTinhTrang: ArrayList<String> = arrayListOf()
 
     @SuppressLint("SimpleDateFormat")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -50,17 +47,22 @@ class HienThiBanAnAdapter(val context: Context, val danhSachBanAn: List<BanAnEnt
             view = convertView
         }
         val banAnEntity2 = danhSachBanAn.get(position)
-//đang lỗi chỗ này, cần set cho từng vị trí position chứ ko phải biến static
         if (banAnEntity2.duocchon) {
             HienThiButton(viewHolder);
         } else {
             AnButton(viewHolder);
         }
-        val ktTinhTrang = BanAnService.layTinhTrangBanTheoMa(context, banAnEntity2.maban)
-        if (ktTinhTrang.equals("true")) {
-            viewHolder.imBanAn!!.setImageResource(R.drawable.banantrue);
+        if (listStringKtTinhTrang.isEmpty()) {
+            for (i in 0 until danhSachBanAn.count()) {
+                listStringKtTinhTrang.add(BanAnService.layTinhTrangBanTheoMa(context,danhSachBanAn.get(i).maban))
+            }
+        }
+
+
+        if (listStringKtTinhTrang.get(position).equals("true")) {
+            viewHolder.imBanAn?.setImageResource(R.drawable.banantrue);
         } else {
-            viewHolder.imBanAn!!.setImageResource(R.drawable.banan);
+            viewHolder.imBanAn?.setImageResource(R.drawable.banan);
         }
 
         viewHolder.txtTenBanAn!!.setText(danhSachBanAn.get(position).tenban);
@@ -78,7 +80,7 @@ class HienThiBanAnAdapter(val context: Context, val danhSachBanAn: List<BanAnEnt
                 val dateFormat = SimpleDateFormat("dd-MM-yy")
                 val ngaygoi = dateFormat.format(calendar.getTime())
                 GoiMonEntity.NGAYGOI = ngaygoi
-                GoiMonEntity.MABAN = BanAnEntity.MABAN
+                GoiMonEntity.MABAN = maban
                 GoiMonEntity.MANV = NhanVienEntity.MANV
                 GoiMonService.themGoiMon(context) { it ->
                     if (!it) {
@@ -92,6 +94,9 @@ class HienThiBanAnAdapter(val context: Context, val danhSachBanAn: List<BanAnEnt
             val fragManager = (context as TrangChuActivity).supportFragmentManager
             val fragTrans = fragManager.beginTransaction()
             val hienThiThucDonFragment = HienThiThucDonFragment()
+            val bundleDuLieuThucDon = Bundle()
+            bundleDuLieuThucDon.putInt("maban",maban)
+            hienThiThucDonFragment.arguments = bundleDuLieuThucDon
             fragTrans.replace(R.id.content, hienThiThucDonFragment).addToBackStack("hienthibanan")
             fragTrans.commit()
         }

@@ -31,6 +31,7 @@ class HienThiThucDonFragment : Fragment() {
     lateinit var adapter:HienThiLoaiMonAnAdapter
     lateinit var gvHienThiLoaiMonAn: GridView
     lateinit var fragManager: FragmentManager
+    var iMaBan:Int = 0
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_hien_thi_thuc_don, container, false)
@@ -39,11 +40,21 @@ class HienThiThucDonFragment : Fragment() {
         val activityTrangChuActivity: TrangChuActivity? = activity as TrangChuActivity?
         activityTrangChuActivity?.supportActionBar!!.setTitle(R.string.thucdon)
         gvHienThiLoaiMonAn = view.findViewById(R.id.gvHienThiThucDon) as GridView
+
         hienThiDanhSachLoaiMonAn()
+        val bundle = arguments
+        if (bundle != null) {
+            iMaBan = bundle.getInt("maban",0)
+        }
+
         adapter.notifyDataSetChanged()
         gvHienThiLoaiMonAn.setOnItemClickListener { _, _, position, _ ->
             LoaiMonAnEntity.MALOAI = danhSachLoaiMonAn.get(position).maloai
             val hienThiDanhSachMonAnFragment = HienThiDanhSachMonAnFragment()
+            val bundle1 = Bundle()
+            bundle1.putInt("maban",iMaBan)
+           hienThiDanhSachMonAnFragment.arguments = bundle1
+
             val fragTransaction = fragManager.beginTransaction()
             fragTransaction.replace(R.id.content,hienThiDanhSachMonAnFragment).addToBackStack("hienthiloai")
             fragTransaction.commit()
@@ -55,10 +66,13 @@ class HienThiThucDonFragment : Fragment() {
         return view
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onStart() {
+        super.onStart()
         hienThiDanhSachLoaiMonAn()
     }
+
+
+
 
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {

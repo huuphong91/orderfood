@@ -1,5 +1,6 @@
 package com.example.huu.orderfood.Services
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import com.example.huu.orderfood.Entities.BanAnEntity
@@ -33,11 +34,12 @@ object BanAnService {
     }
 
 
+    @SuppressLint("Recycle")
     fun layTinhTrangBanTheoMa(context: Context, maban:Int):String {
         var tinhtrang:String = ""
         val truyvan = "SELECT * FROM $TB_BANAN WHERE $TB_BANAN_MABAN = '$maban'"
         val cursor = AuthService.createOrOpenDatabase(context).rawQuery(truyvan, null)
-        cursor.moveToFirst();
+        cursor.moveToFirst()
         while (!cursor.isAfterLast()){
             tinhtrang = cursor.getString(cursor.getColumnIndex(TB_BANAN_TINHTRANG))
             cursor.moveToNext();
