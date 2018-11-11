@@ -28,7 +28,7 @@ class DangKyActivity : AppCompatActivity() {
         rbNam.isChecked = true
     }
 
-    fun onClickedBtnDongY(view: View) {
+    fun onClickedBtnDongY() {
         NhanVienEntity.TENDN = edtTenDNDK.text.toString()
         NhanVienEntity.MATKHAU = edtMatKhau.text.toString()
         NhanVienEntity.NGAYSINH = edtNgaySinh.text.toString()

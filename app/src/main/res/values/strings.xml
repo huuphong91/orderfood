@@ -37,10 +37,11 @@
     <string name="tongcong">Tổng cộng :</string>
     <string name="thanhtoanthanhcong">Thanh toán thành công !</string>
     <string name="loi">Lỗi !</string>
-    <string name="sua">Sữa</string>
+    <string name="sua">Sửa</string>
     <string name="xoa">Xóa</string>
+    <string name="suabanan">Sửa bàn ăn</string>
     <string name="xoathanhcong">Xóa thành công !</string>
-    <string name="suathanhcong">Sữa thàng công !</string>
+    <string name="suathanhcong">Sữa thành công !</string>
     <string name="themnhanvien">Thêm nhân viên !</string>
     <string name="capnhatnhanvien">Cập nhật nhân viên</string>
 

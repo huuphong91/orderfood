@@ -5,6 +5,8 @@ import android.content.ContentValues
 import android.content.Context
 import com.example.huu.orderfood.Entities.ChiTietGoiMonEntity2
 import com.example.huu.orderfood.Entities.GoiMonEntity
+import com.example.huu.orderfood.Entities.ThanhToanEntity
+import com.example.huu.orderfood.Entities.ThanhToanEntity2
 import com.example.huu.orderfood.Utilities.*
 
 object GoiMonService {
@@ -83,5 +85,45 @@ object GoiMonService {
         } else {
             complition(false)
         }
+    }
+
+
+
+    fun layDanhSachMonAnTheoMaGoiMon(context: Context, magoimon: Int):List<ThanhToanEntity2> {
+        val truyvan = "SELECT * FROM $TB_CHITIETGOIMON ct, $TB_MONAN ma WHERE ct.$TB_CHITIETGOIMON_MAMONAN " +
+                "= ma.$TB_MONAN_MAMON AND $TB_CHITIETGOIMON_MAGOIMON = $magoimon"
+        val listThanhToan = arrayListOf<ThanhToanEntity2>()
+        val cursor = AuthService.createOrOpenDatabase(context).rawQuery(truyvan, null)
+        cursor.moveToFirst()
+        while (!cursor.isAfterLast) {
+
+           ThanhToanEntity.TENMONAN = cursor.getString(cursor.getColumnIndex(TB_MONAN_TENMONAN))
+            ThanhToanEntity.GIATIEN = cursor.getInt(cursor.getColumnIndex(TB_MONAN_GIATIEN))
+            ThanhToanEntity.SOLUONG = cursor.getInt(cursor.getColumnIndex(TB_CHITIETGOIMON_SOLUONG))
+            listThanhToan.add(ThanhToanEntity.createThanhToanEntity())
+            cursor.moveToNext()
+        }
+
+        return listThanhToan
+
+
+    }
+
+
+    fun capNhatTrangThaiGoiMonTheoMaBan(
+        context: Context,
+        maban: Int,
+        tinhtrang: String,
+        complition: (Boolean) -> Unit) {
+        val contentValues = ContentValues()
+        contentValues.put(TB_GOIMON_TINHTRANG, tinhtrang)
+        val kiemtra = AuthService.createOrOpenDatabase(context)
+            .update(TB_GOIMON, contentValues, "$TB_GOIMON_MABAN = '$maban'", null)
+        if (kiemtra != 0) {
+            complition(true)
+        } else {
+            complition(false)
+        }
+
     }
     }

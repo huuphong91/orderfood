@@ -50,6 +50,7 @@ const val TB_CHITIETGOIMON_SOLUONG = "SOLUONG"
 
 //Request Code
 const val REQUEST_CODE_MOHINH = 1
+const val REQUEST_CODE_SUA = 2
 
 
 

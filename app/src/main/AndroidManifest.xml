@@ -27,6 +27,7 @@
         </activity>
         <activity
                 android:name=".ThemBanAnActivity"
+                android:label="@string/thembanan"
                 android:theme="@style/PopUpActivity">
         </activity>
         <activity android:name=".ThemThucDonActivity">
@@ -36,7 +37,14 @@
                 android:label="@string/loaithucdon"
                 android:theme="@style/PopUpActivity">
         </activity>
-        <activity android:name=".SoLuongActivity"
+        <activity
+                android:name=".SoLuongActivity"
+                android:label="@string/soluong"
+                android:theme="@style/PopUpActivity"/>
+        <activity android:name=".ThanhToanActivity">
+        </activity>
+        <activity android:name=".SuaBanAnActivity"
+        android:label="@string/suabanan"
         android:theme="@style/PopUpActivity"/>
 
     </application>

@@ -2,6 +2,7 @@ package com.example.huu.orderfood.Adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +22,7 @@ import com.example.huu.orderfood.Entities.GoiMonEntity
 import com.example.huu.orderfood.Entities.NhanVienEntity
 import com.example.huu.orderfood.Fragments.HienThiThucDonFragment
 import com.example.huu.orderfood.Services.GoiMonService
+import com.example.huu.orderfood.ThanhToanActivity
 import kotlin.collections.ArrayList
 
 
@@ -64,16 +66,14 @@ class HienThiBanAnAdapter(val context: Context, val danhSachBanAn: List<BanAnEnt
         } else {
             viewHolder.imBanAn?.setImageResource(R.drawable.banan);
         }
-
+        val maban = danhSachBanAn.get(position).maban
         viewHolder.txtTenBanAn!!.setText(danhSachBanAn.get(position).tenban);
         viewHolder.imBanAn!!.setOnClickListener { _ ->
            banAnEntity2.duocchon = true
             HienThiButton(viewHolder)
         }
         viewHolder.imGoiMon!!.setOnClickListener { _ ->
-            val maban = danhSachBanAn.get(position).maban
             val tinhtrang = BanAnService.layTinhTrangBanTheoMa(context, maban)
-
             if (tinhtrang.equals("false")) {
 // thực hiện code thêm bảng gọi món và cập nhật lại tình trạng bàn
                 val calendar = Calendar.getInstance()
@@ -100,7 +100,11 @@ class HienThiBanAnAdapter(val context: Context, val danhSachBanAn: List<BanAnEnt
             fragTrans.replace(R.id.content, hienThiThucDonFragment).addToBackStack("hienthibanan")
             fragTrans.commit()
         }
-
+        viewHolder.imThanhToan!!.setOnClickListener { _ ->
+            val intent = Intent(context, ThanhToanActivity::class.java)
+            intent.putExtra("maban",maban)
+            context.startActivity(intent)
+        }
         viewHolder.imAnButton!!.setOnClickListener { _ ->
             AnButton(viewHolder)
             banAnEntity2.duocchon = false

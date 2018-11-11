@@ -18,11 +18,11 @@ class DatePickerFragment:DialogFragment(), DatePickerDialog.OnDateSetListener {
         val iThang = calendar.get(Calendar.MONTH)+1
         val iNgay = calendar.get(Calendar.DAY_OF_MONTH)
         //Trả về dialog chọn mặc định là ngày tháng năm hiện tại
-        return DatePickerDialog(activity,this,iNam,iThang,iNgay)
+        return DatePickerDialog(activity!!,this,iNam,iThang,iNgay)
     }
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         //setText và format ngày tháng năm mà người dùng đã lựa chọn lên edtNgaySinh trong DangKyActivity
-       val edtNgaySinh = activity?.findViewById<EditText>(R.id.edtNgaySinh) as EditText
+       val edtNgaySinh = activity?.findViewById(R.id.edtNgaySinh) as EditText
         val sNgaySinh = "$dayOfMonth/${month+1}/$year"
         edtNgaySinh.setText(sNgaySinh)
     }

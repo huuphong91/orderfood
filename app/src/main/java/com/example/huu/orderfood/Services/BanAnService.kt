@@ -59,4 +59,25 @@ object BanAnService {
             complition(false)
         }
     }
+
+    fun xoaBanAnTheoMa(context: Context, maban: Int, complition: (Boolean) -> Unit) {
+        val kiemtra = AuthService.createOrOpenDatabase(context).delete(TB_BANAN, "$TB_BANAN_MABAN = $maban", null)
+        if (kiemtra != 0) {
+            complition(true)
+        } else {
+            complition(false)
+        }
+    }
+
+    fun capNhatLaiTenBan(context: Context, maban: Int, tenban:String, complition: (Boolean) -> Unit) {
+        val contentValues = ContentValues()
+        contentValues.put(TB_BANAN_TENBAN, tenban )
+        val kiemtra = AuthService.createOrOpenDatabase(context).update(TB_BANAN,contentValues,
+            "$TB_BANAN_MABAN = $maban",null)
+        if (kiemtra != 0) {
+            complition(true)
+        } else {
+            complition(false)
+        }
+    }
 }
