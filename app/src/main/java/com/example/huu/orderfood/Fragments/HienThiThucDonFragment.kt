@@ -3,8 +3,8 @@ package com.example.huu.orderfood.Fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import android.view.*
 import android.widget.GridView
 import com.example.huu.orderfood.Adapters.HienThiLoaiMonAnAdapter
@@ -75,7 +75,7 @@ class HienThiThucDonFragment : Fragment() {
 
 
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         //thêm item menu sẵn có không cần inflate menu
         if (menu != null) {
@@ -89,7 +89,7 @@ class HienThiThucDonFragment : Fragment() {
 
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when (item?.itemId) {
             R.id.itThemThucDon -> themThucDOn()

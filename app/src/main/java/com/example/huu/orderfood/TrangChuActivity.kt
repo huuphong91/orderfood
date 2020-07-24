@@ -1,23 +1,24 @@
 package com.example.huu.orderfood
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentTransaction
-import android.support.v4.widget.DrawerLayout
-import android.support.v7.app.ActionBarDrawerToggle
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.appcompat.app.ActionBarDrawerToggle
 import android.view.Gravity
 import android.view.MenuItem
 import android.widget.TextView
+import androidx.core.view.GravityCompat
 import com.example.huu.orderfood.Entities.NhanVienEntity
 import com.example.huu.orderfood.Fragments.HienThiBanAnFragment
 import com.example.huu.orderfood.Fragments.HienThiThucDonFragment
 import kotlinx.android.synthetic.main.activity_trang_chu.*
 
 class TrangChuActivity : AppCompatActivity(){
-        private lateinit var fragmentManager:FragmentManager
-    private lateinit var fragmentTransaction:FragmentTransaction
+        private lateinit var fragmentManager: FragmentManager
+    private lateinit var fragmentTransaction: FragmentTransaction
     private lateinit var fragment: Fragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,7 +64,8 @@ return@setNavigationItemSelectedListener false
         menuItem.setChecked(true)
         //sau khi bấm vào menu item để hiển thị fragment khác thì cần gọi dòng này để tự động đóng thằng drawer lại
         //Gravity.START có liên quan với tools:openDrawer="start"
-        drawerLayout.closeDrawer(Gravity.START)
+        drawerLayout.closeDrawer(GravityCompat.START)
+
     }
 
     private fun hienThiFragmentBanAn(menuItem: MenuItem) {
@@ -75,7 +77,7 @@ return@setNavigationItemSelectedListener false
         menuItem.setChecked(true)
         //sau khi bấm vào menu item để hiển thị fragment khác thì cần gọi dòng này để tự động đóng thằng drawer lại
         //Gravity.START có liên quan với tools:openDrawer="start"
-        drawerLayout.closeDrawer(Gravity.START)
+        drawerLayout.closeDrawer(GravityCompat.START)
 
     }
 }

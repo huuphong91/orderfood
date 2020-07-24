@@ -4,7 +4,7 @@ package com.example.huu.orderfood.Fragments
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.*
 
 import com.example.huu.orderfood.R
@@ -19,10 +19,6 @@ import android.widget.AdapterView
 import android.widget.Toast
 import com.example.huu.orderfood.SuaBanAnActivity
 import com.example.huu.orderfood.Utilities.REQUEST_CODE_SUA
-import android.R.attr.data
-
-
-
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,7 +46,7 @@ class HienThiBanAnFragment : Fragment() {
         return view
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         //thêm item menu sẵn có không cần inflate menu
         if (menu != null) {
@@ -64,18 +60,18 @@ class HienThiBanAnFragment : Fragment() {
 
     }
 
-    override fun onCreateContextMenu(menu: ContextMenu, v: View, menuInfo: ContextMenu.ContextMenuInfo) {
+    override fun onCreateContextMenu(menu: ContextMenu, v: View, menuInfo: ContextMenu.ContextMenuInfo?) {
         super.onCreateContextMenu(menu, v, menuInfo)
         activity!!.menuInflater.inflate(R.menu.edit_context_menu, menu)
 
     }
 
-    override fun onContextItemSelected(item: MenuItem?): Boolean {
+    override fun onContextItemSelected(item: MenuItem): Boolean {
 
         if (item != null) {
             val menuInfo:AdapterView.AdapterContextMenuInfo = item.menuInfo as AdapterView.AdapterContextMenuInfo
             val vitri = menuInfo.position
-            val maban = danhSachBanAn.get(vitri).maban
+            val maban = danhSachBanAn[vitri].maban
             when (item.itemId) {
                 R.id.itSua -> suaBanAn(maban)
                 R.id.itXoa -> xoaBanAn(maban)
@@ -113,8 +109,8 @@ class HienThiBanAnFragment : Fragment() {
 
 
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
             R.id.itThemBanAn -> themBanAn()
         }
         return true

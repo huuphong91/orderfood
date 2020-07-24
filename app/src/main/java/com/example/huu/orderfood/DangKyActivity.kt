@@ -1,6 +1,6 @@
 package com.example.huu.orderfood
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -28,7 +28,7 @@ class DangKyActivity : AppCompatActivity() {
         rbNam.isChecked = true
     }
 
-    fun onClickedBtnDongY() {
+    fun onClickedBtnDongY(view: View) {
         NhanVienEntity.TENDN = edtTenDNDK.text.toString()
         NhanVienEntity.MATKHAU = edtMatKhau.text.toString()
         NhanVienEntity.NGAYSINH = edtNgaySinh.text.toString()

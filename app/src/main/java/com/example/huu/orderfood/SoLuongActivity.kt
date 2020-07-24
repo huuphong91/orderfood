@@ -1,6 +1,6 @@
 package com.example.huu.orderfood
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -18,14 +18,14 @@ class SoLuongActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_so_luong)
         val intent = intent
-        iMaBan = intent.getIntExtra("maban",0)
-        iMaMonAn = intent.getIntExtra("mamonan",0)
+        iMaBan = intent.getIntExtra("maban", 0)
+        iMaMonAn = intent.getIntExtra("mamonan", 0)
 
     }
 
     fun onClickedBtnThemSoLuong(view: View) {
-        iMaGoiMon = GoiMonService.layMaGoiMonTheoMaBan(this,iMaBan).toInt()
-        GoiMonService.kiemTraMonAnDaTonTai(this, iMaGoiMon,iMaMonAn){it ->
+        iMaGoiMon = GoiMonService.layMaGoiMonTheoMaBan(this, iMaBan).toInt()
+        GoiMonService.kiemTraMonAnDaTonTai(this, iMaGoiMon, iMaMonAn) {
             if (it) {
                 val soluongcu = GoiMonService.laySoLuongMonAnTheoMaGoiMon(this, iMaGoiMon)
                 val soluongmoi = edSoLuongMonAn.text.toString().toInt()
@@ -33,10 +33,10 @@ class SoLuongActivity : AppCompatActivity() {
                 val chiTietGoiMonEntity2 = ChiTietGoiMonEntity2(iMaMonAn, iMaGoiMon, tongsoluong)
                 GoiMonService.capNhatSoLuongMonAn(this, chiTietGoiMonEntity2) { boolean ->
                     if (boolean) {
-                        Toast.makeText(this,"Thêm thành công",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Thêm thành công", Toast.LENGTH_SHORT).show()
                         finish()
                     } else {
-                        Toast.makeText(this,"Thêm thất bại",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Thêm thất bại", Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -45,10 +45,10 @@ class SoLuongActivity : AppCompatActivity() {
                 val chiTietGoiMonEntity2 = ChiTietGoiMonEntity2(iMaMonAn, iMaGoiMon, soluonggoi)
                 GoiMonService.themChiTietGoiMon(this, chiTietGoiMonEntity2) { b ->
                     if (b) {
-                        Toast.makeText(this,"Thêm thành công",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Thêm thành công", Toast.LENGTH_SHORT).show()
                         finish()
                     } else {
-                        Toast.makeText(this,"Thêm thất bại",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Thêm thất bại", Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -58,7 +58,6 @@ class SoLuongActivity : AppCompatActivity() {
         }
 
     }
-
 
 
 }

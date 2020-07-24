@@ -3,13 +3,13 @@ package com.example.huu.orderfood.Fragments
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
+import androidx.fragment.app.DialogFragment
 import android.widget.DatePicker
 import android.widget.EditText
 import com.example.huu.orderfood.R
 import java.util.*
 //Dùng để hiển thị một Dialog lựa chọn ngày tháng năm
-class DatePickerFragment:DialogFragment(), DatePickerDialog.OnDateSetListener {
+class DatePickerFragment: DialogFragment(), DatePickerDialog.OnDateSetListener {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         //Lấy ngày tháng năm hiện tại
